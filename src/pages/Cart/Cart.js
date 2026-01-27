@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(Storecontext);
-    const navigate =useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="cart">
       <div className="cart-items">
@@ -22,9 +22,9 @@ const Cart = () => {
         {food_list.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
-              <div>
+              <div key={index}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="" />
+                  <img src={item.image} alt={item.name} />
                   <p>{item.name}</p>
                   <p>{item.price}</p>
                   <p>{cartItems[item._id]}</p>
@@ -37,6 +37,7 @@ const Cart = () => {
               </div>
             );
           }
+          return null; // <--- ajouté pour satisfaire ESLint
         })}
       </div>
       <div className="cart-bottom">
@@ -58,7 +59,9 @@ const Cart = () => {
               <b>${getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button onClick={()=>navigate("/Placeorder")}>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/Placeorder")}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
         <div className="cart-promocode">
           <p>If you have a promo code, Enter it here</p>

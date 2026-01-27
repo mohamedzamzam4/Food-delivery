@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Cart from './pages/Cart/Cart';
 import Placeorder from './pages/PlaceOrder/Placeorder';
-import ExplorerMenu from './components/ExplorerMenu';
 import Footer from './components/Footer';
 import { useState } from 'react';
 import LoginPopup from './components/LoginPopup';
